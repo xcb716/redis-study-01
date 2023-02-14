@@ -1,6 +1,6 @@
-package com.redis;
+package com.application;
 
-import org.apache.catalina.User;
+import com.xcb.jedis.util.JedisConnectionFactory;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -22,7 +22,9 @@ public class TestRedis {
     @BeforeEach
     void setUp() {
         //建立连接
-        jedis = new Jedis("192.168.118.131", 6379);
+        //jedis = new Jedis("192.168.118.131", 6379);
+        //连接池连接jedis
+        jedis = JedisConnectionFactory.getJedis();
         //设置密码
         jedis.auth("123321");
         //选择库
